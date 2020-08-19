@@ -61,22 +61,30 @@ class Student
     end
   end
   
-  def self.first_X_students_in_grade_10(x)
+  # def self.first_X_students_in_grade_10(x)
+  #   sql = <<-SQL
+  #   SELECT *
+  #   FROM students
+  #   WHERE students.grade = 10
+  #   SQL
+  #   DB[:conn].execute(sql, x)
+  # end
+  
+  # def self.first_student_in_grade_10
+  #   s = self.first_X_students_in_grade_10
+  #   s.collect do |x|
+  #     self.new_from_db(x)
+  #   end[0]
+  # end
+  
+  def self.all_students_in_grade_X(grade)
     sql = <<-SQL
     SELECT *
     FROM students
-    WHERE students.grade = 10
+    WHERE grade = ?
     SQL
-    DB[:conn].execute(sql, x)
+    DB[:conn].execute(sql, grade)
   end
-  
-  def self.first_student_in_grade_10
-    s = self.first_X_students_in_grade_10
-    s.collect do |x|
-      self.new_from_db(x)
-    end[0]
-  end
-  
   
   def save
     sql = <<-SQL
