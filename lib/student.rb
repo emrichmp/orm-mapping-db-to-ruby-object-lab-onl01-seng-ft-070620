@@ -65,7 +65,7 @@ class Student
     s = self.first_X_students_in_grade_10student_in_grade_10
     s.collect do |x|
       self.new_from_db(x)
-    end
+    end[0]
   end
   
   def self.first_X_students_in_grade_10(x)
