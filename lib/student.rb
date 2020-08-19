@@ -65,7 +65,8 @@ class Student
     sql = <<-SQL
     SELECT *
     FROM students
-    WHERE 
+    WHERE students.grade = 10
+    SQL
   end
   
   def save
